@@ -82,6 +82,15 @@ curl -s "http://47.102.196.1:8081/v1/daily_digest?days=1&sectors=创新药" \
   -H "Content-Type: application/json"
 ```
 
+### 专利查询
+```bash
+curl -s "http://47.102.196.1:8081/v1/search_patents" \
+  -H "X-API-Key: $SANO_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"keyword": "CAR-T", "limit": 10}'
+```
+支持参数：`keyword`（标题/摘要/申请人）、`company_name`（公司名）、`sector`（赛道）、`status`（专利状态）、`limit`（最多返回数，默认20）
+
 ---
 
 ## 使用原则
@@ -102,3 +111,5 @@ curl -s "http://47.102.196.1:8081/v1/daily_digest?days=1&sectors=创新药" \
 | 恒瑞今天股价 | market，code=600276 |
 | 今天医疗行业有什么重要新闻 | daily_digest，days=1 |
 | 最近B轮融资的医疗器械公司 | search_financing，sector=医疗器械，stage=B轮 |
+| 查CAR-T相关专利 | search_patents，keyword=CAR-T |
+| 恒瑞的专利数量 | search_patents，company_name=恒瑞医药 |
